@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentro Driver</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- Mentro Logo -->
+        <div class="brand">
+            <div class="logo">MD</div>
+
+            <h1>Mentro</h1>
+            <p>Driver Partner</p>
+        </div>
+
+        <!-- Login Card -->
+        <section class="login-card">
+
+            <h2>Welcome to Mentro</h2>
+
+            <p class="subtitle">
+                Login to continue to your driver account
+            </p>
+
+            <form id="loginForm">
+
+                <label for="mobile">Mobile Number</label>
+
+                <div class="mobile-input">
+                    <span>+91</span>
+                    <input
+                        type="tel"
+                        id="mobile"
+                        placeholder="Enter mobile number"
+                        maxlength="10"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="continue-btn">
+                    Continue
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <p class="register-text">
+                New driver?
+                <button type="button" id="registerBtn">
+                    Register here
+                </button>
+            </p>
+
+        </section>
+
+        <footer>
+            © 2026 Mentro
+        </footer>
+
+    </main>
+
+<!-- OTP VERIFICATION -->
+<section id="otpPage" class="auth-page hidden">
+
+    <div class="auth-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-mark">MD</div>
+            <h1>Mentro</h1>
+            <p>Driver Partner</p>
+        </div>
+
+        <div class="auth-card">
+
+            <h2>Verify your number</h2>
+
+            <p class="auth-subtitle">
+                Enter the 6-digit OTP sent to your mobile number
+            </p>
+
+            <div class="otp-inputs">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+            </div>
+
+            <button class="primary-btn" onclick="verifyOTP()">
+                Verify & Continue
+            </button>
+
+            <button class="secondary-btn" onclick="backToLogin()">
+                ← Change number
+            </button>
+
+            <p class="resend-text">
+                Didn't receive the OTP?
+                <button class="text-btn" onclick="resendOTP()">
+                    Resend OTP
+                </button>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- DRIVER REGISTRATION -->
+<section id="registerPage" class="auth-page hidden">
+
+    <div class="auth-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-mark">MD</div>
+            <h1>Mentro</h1>
+            <p>Driver Partner</p>
+        </div>
+
+        <div class="auth-card">
+
+            <h2>Create your driver profile</h2>
+
+            <p class="auth-subtitle">
+                Enter your details to become a Mentro driver partner
+            </p>
+
+            <!-- Personal Details -->
+            <div class="form-section">
+                <h3>Personal details</h3>
+
+                <label>Full name</label>
+                <input
+                    type="text"
+                    id="driverName"
+                    placeholder="Enter your full name"
+                >
+
+                <label>Mobile number</label>
+                <input
+                    type="tel"
+                    id="driverMobile"
+                    placeholder="Enter mobile number"
+                    maxlength="10"
+                >
+            </div>
+
+            <!-- Vehicle Details -->
+            <div class="form-section">
+
+                <h3>Vehicle details</h3>
+
+                <label>Vehicle type</label>
+
+                <select id="vehicleType">
+                    <option value="">Select vehicle type</option>
+                    <option value="car">Car</option>
+                    <option value="auto">Auto</option>
+                    <option value="bike">Bike</option>
+                </select>
+
+                <label>Vehicle number</label>
+
+                <input
+                    type="text"
+                    id="vehicleNumber"
+                    placeholder="TN 00 XX 0000"
+                >
+
+                <label>Vehicle model</label>
+
+                <input
+                    type="text"
+                    id="vehicleModel"
+                    placeholder="Enter vehicle model"
+                >
+
+            </div>
+
+            <!-- License -->
+            <div class="form-section">
+
+                <h3>Driving license</h3>
+
+                <label>License number</label>
+
+                <input
+                    type="text"
+                    id="licenseNumber"
+                    placeholder="Enter driving license number"
+                >
+
+            </div>
+
+            <!-- Documents -->
+            <div class="form-section">
+
+                <h3>Required documents</h3>
+
+                <div class="upload-box">
+
+                    <span>📄</span>
+
+                    <div>
+                        <strong>Driving license</strong>
+                        <p>Upload a clear image</p>
+                    </div>
+
+                    <input type="file" id="licenseFile">
+                </div>
+
+                <div class="upload-box">
+
+                    <span>🚗</span>
+
+                    <div>
+                        <strong>Vehicle RC</strong>
+                        <p>Upload a clear image</p>
+                    </div>
+
+                    <input type="file" id="rcFile">
+                </div>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="submitDriverRegistration()"
+            >
+                Submit Registration
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- DRIVER DASHBOARD -->
+<section id="dashboardPage" class="dashboard-page hidden">
+
+    <!-- Top Header -->
+    <header class="dashboard-header">
+
+        <div class="dashboard-brand">
+            <div class="dashboard-logo">MD</div>
+
+            <div>
+                <h2>Mentro</h2>
+                <span>Driver Partner</span>
+            </div>
+        </div>
+
+        <button class="profile-button">
+            <span>👤</span>
+        </button>
+
+    </header>
+
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+
+        <!-- Welcome -->
+        <div class="welcome-section">
+
+            <p>Good morning</p>
+
+            <h1>
+                Welcome, <span id="dashboardName">Driver</span> 👋
+            </h1>
+
+            <span class="date-text">
+                Ready for your next ride?
+            </span>
+
+        </div>
+
+
+        <!-- Online Status -->
+        <div class="online-card">
+
+            <div class="online-info">
+
+                <div class="online-icon">
+                    ●
+                </div>
+
+                <div>
+                    <h3 id="onlineStatus">
+                        You're Offline
+                    </h3>
+
+                    <p>
+                        Go online to receive ride requests
+                    </p>
+                </div>
+
+            </div>
+
+            <button
+                id="onlineButton"
+                class="online-button"
+                onclick="toggleOnlineStatus()"
+            >
+                Go Online
+            </button>
+
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="dashboard-stats">
+
+            <div class="dashboard-stat">
+
+                <div class="stat-icon ride-icon">
+                    🚕
+                </div>
+
+                <div>
+                    <span>Today's Rides</span>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <div class="stat-icon earning-icon">
+                    ₹
+                </div>
+
+                <div>
+                    <span>Today's Earnings</span>
+                    <strong>₹0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Quick Actions -->
+        <div class="section-heading">
+
+            <div>
+                <h2>Quick access</h2>
+                <p>Manage your driver account</p>
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+            <button class="quick-action">
+
+                <div class="quick-icon">
+                    🚕
+                </div>
+
+                <div>
+                    <strong>My Rides</strong>
+                    <span>View ride history</span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+
+            <button class="quick-action">
+
+                <div class="quick-icon">
+                    ₹
+                </div>
+
+                <div>
+                    <strong>Earnings</strong>
+                    <span>View your earnings</span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+
+            <button class="quick-action">
+
+                <div class="quick-icon">
+                    👤
+                </div>
+
+                <div>
+                    <strong>Driver Profile</strong>
+                    <span>Manage your details</span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+
+            <button class="quick-action">
+
+                <div class="quick-icon">
+                    ?
+                </div>
+
+                <div>
+                    <strong>Mentro Support</strong>
+                    <span>Get help from our team</span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- RIDE REQUEST -->
+<section id="rideRequestPage" class="ride-request-page hidden">
+
+    <div class="ride-request-container">
+
+        <div class="ride-request-header">
+
+            <div class="request-icon">
+                🚕
+            </div>
+
+            <div>
+                <span class="new-label">NEW RIDE REQUEST</span>
+                <h1>New trip available</h1>
+            </div>
+
+        </div>
+
+
+        <!-- Customer -->
+        <div class="customer-card">
+
+            <div class="customer-avatar">
+                AK
+            </div>
+
+            <div>
+                <strong>Arun Kumar</strong>
+                <span>Customer</span>
+            </div>
+
+            <div class="rating">
+                ★ 4.8
+            </div>
+
+        </div>
+
+
+        <!-- Route -->
+        <div class="route-card">
+
+            <div class="route-point">
+
+                <div class="pickup-dot"></div>
+
+                <div>
+                    <span>Pickup</span>
+
+                    <strong>
+                        Chennai Central
+                    </strong>
+
+                    <p>
+                        Park Town, Chennai
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="route-line"></div>
+
+
+            <div class="route-point">
+
+                <div class="drop-dot"></div>
+
+                <div>
+                    <span>Drop</span>
+
+                    <strong>
+                        Anna Nagar
+                    </strong>
+
+                    <p>
+                        2nd Avenue, Chennai
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Trip Details -->
+        <div class="trip-details">
+
+            <div>
+                <span>Distance</span>
+                <strong>8.4 km</strong>
+            </div>
+
+            <div>
+                <span>Estimated time</span>
+                <strong>28 min</strong>
+            </div>
+
+            <div>
+                <span>Estimated fare</span>
+                <strong class="fare">
+                    ₹245
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- Actions -->
+        <div class="ride-actions">
+
+            <button
+                class="reject-ride"
+                onclick="rejectRide()">
+
+                Reject
+
+            </button>
+
+            <button
+                class="accept-ride"
+                onclick="acceptRide()">
+
+                Accept Ride
+                <span>→</span>
+
+            </button>
+
+        </div>
+
+
+        <p class="request-note">
+            Please review the trip details before accepting.
+        </p>
+
+    </div>
+
+</section>
+<!-- ACTIVE RIDE -->
+<section id="activeRidePage" class="active-ride-page hidden">
+
+    <div class="active-ride-container">
+
+        <!-- Header -->
+        <div class="active-header">
+
+            <div>
+                <span class="live-label">● ACTIVE RIDE</span>
+                <h1>Your current trip</h1>
+            </div>
+
+            <div class="ride-id">
+                #MTR1024
+            </div>
+
+        </div>
+
+
+        <!-- Customer -->
+        <div class="active-customer-card">
+
+            <div class="customer-avatar">
+                AK
+            </div>
+
+            <div class="customer-info">
+
+                <strong>Arun Kumar</strong>
+
+                <span>Customer</span>
+
+            </div>
+
+            <button class="call-button">
+                ☎
+            </button>
+
+        </div>
+
+
+        <!-- Route -->
+        <div class="active-route-card">
+
+            <div class="active-location">
+
+                <div class="active-dot pickup"></div>
+
+                <div>
+                    <span>Pickup</span>
+
+                    <strong>
+                        Chennai Central
+                    </strong>
+
+                    <p>
+                        Park Town, Chennai
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="active-line"></div>
+
+
+            <div class="active-location">
+
+                <div class="active-dot drop"></div>
+
+                <div>
+                    <span>Drop</span>
+
+                    <strong>
+                        Anna Nagar
+                    </strong>
+
+                    <p>
+                        2nd Avenue, Chennai
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+        <button
+            class="navigate-button"
+            onclick="navigateToPickup()">
+
+            <span>🧭</span>
+
+            <div>
+                <strong>Navigate to Pickup</strong>
+                <small>Open navigation</small>
+            </div>
+
+            <b>→</b>
+
+        </button>
+
+
+        <!-- Ride Status -->
+        <div class="ride-status-card">
+
+            <span class="status-title">
+                RIDE STATUS
+            </span>
+
+            <h2 id="rideStatus">
+                Heading to pickup
+            </h2>
+
+            <p id="rideStatusText">
+                Reach the pickup location and start the ride.
+            </p>
+
+        </div>
+
+
+        <!-- Start / Complete -->
+        <button
+            id="startRideButton"
+            class="start-ride-button"
+            onclick="startRide()">
+
+            Start Ride
+
+        </button>
+
+
+        <button
+            id="completeRideButton"
+            class="complete-ride-button hidden"
+            onclick="completeRide()">
+
+            Complete Ride
+
+        </button>
+
+
+        <p class="support-note">
+            Need help? Contact Mentro Support.
+        </p>
+
+    </div>
+
+</section>
+<!-- TRIP COMPLETED -->
+<section id="tripCompletedPage" class="trip-completed-page hidden">
+
+    <div class="trip-completed-container">
+
+        <div class="completed-icon">
+            ✓
+        </div>
+
+        <span class="completed-label">
+            TRIP COMPLETED
+        </span>
+
+        <h1>Ride completed</h1>
+
+        <p class="completed-subtitle">
+            Your trip has been completed successfully.
+        </p>
+
+
+        <!-- Fare -->
+        <div class="fare-card">
+
+            <span>Total fare</span>
+
+            <strong>₹245</strong>
+
+            <small>Payment collected from customer</small>
+
+        </div>
+
+
+        <!-- Trip Summary -->
+        <div class="summary-card">
+
+            <h2>Trip summary</h2>
+
+            <div class="summary-row">
+                <span>Customer</span>
+                <strong>Arun Kumar</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Pickup</span>
+                <strong>Chennai Central</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Drop</span>
+                <strong>Anna Nagar</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Distance</span>
+                <strong>8.4 km</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Trip duration</span>
+                <strong>28 min</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Payment</span>
+                <strong class="paid">Paid</strong>
+            </div>
+
+        </div>
+
+
+        <button
+            class="dashboard-button"
+            onclick="backToDashboard()">
+
+            Back to Dashboard
+
+        </button>
+
+    </div>
+
+</section>
+<!-- RIDE HISTORY & EARNINGS -->
+<section id="historyPage" class="history-page hidden">
+
+    <div class="history-container">
+
+        <!-- Header -->
+        <div class="history-header">
+            <div>
+                <span class="page-label">DRIVER ACTIVITY</span>
+                <h1>Ride History</h1>
+                <p>View your completed trips and earnings.</p>
+            </div>
+
+            <button
+                class="back-button"
+                onclick="backToDashboard()">
+                ←
+            </button>
+        </div>
+
+
+        <!-- Earnings Summary -->
+        <div class="earnings-summary">
+
+            <div class="earnings-main">
+                <span>Today's earnings</span>
+                <strong>₹1,245</strong>
+                <small>+ ₹245 from your latest ride</small>
+            </div>
+
+            <div class="earnings-icon">
+                ₹
+            </div>
+
+        </div>
+
+
+        <!-- Stats -->
+        <div class="history-stats">
+
+            <div>
+                <span>Completed</span>
+                <strong>6</strong>
+            </div>
+
+            <div>
+                <span>Total distance</span>
+                <strong>42.8 km</strong>
+            </div>
+
+            <div>
+                <span>Online time</span>
+                <strong>5h 20m</strong>
+            </div>
+
+        </div>
+
+
+        <!-- Ride List -->
+        <div class="history-section">
+
+            <div class="section-title">
+                <h2>Recent rides</h2>
+                <span>Today</span>
+            </div>
+
+
+            <div class="ride-history-list">
+
+                <!-- Ride 1 -->
+                <div class="history-ride">
+
+                    <div class="history-ride-icon">
+                        🚕
+                    </div>
+
+                    <div class="history-ride-info">
+
+                        <strong>
+                            Chennai Central → Anna Nagar
+                        </strong>
+
+                        <span>
+                            Today • 11:20 AM • 8.4 km
+                        </span>
+
+                    </div>
+
+                    <div class="history-fare">
+                        <strong>₹245</strong>
+                        <span>Paid</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Ride 2 -->
+                <div class="history-ride">
+
+                    <div class="history-ride-icon">
+                        🚕
+                    </div>
+
+                    <div class="history-ride-info">
+
+                        <strong>
+                            Guindy → Adyar
+                        </strong>
+
+                        <span>
+                            Today • 09:45 AM • 6.2 km
+                        </span>
+
+                    </div>
+
+                    <div class="history-fare">
+                        <strong>₹180</strong>
+                        <span>Paid</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Ride 3 -->
+                <div class="history-ride">
+
+                    <div class="history-ride-icon">
+                        🚕
+                    </div>
+
+                    <div class="history-ride-info">
+
+                        <strong>
+                            Tambaram → Pallavaram
+                        </strong>
+
+                        <span>
+                            Today • 08:10 AM • 5.8 km
+                        </span>
+
+                    </div>
+
+                    <div class="history-fare">
+                        <strong>₹155</strong>
+                        <span>Paid</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- DRIVER PROFILE -->
+<section id="profilePage" class="profile-page hidden">
+
+    <div class="profile-container">
+
+        <!-- Header -->
+        <div class="profile-header">
+
+            <div>
+                <span class="page-label">DRIVER ACCOUNT</span>
+                <h1>My Profile</h1>
+                <p>Manage your Mentro driver details.</p>
+            </div>
+
+            <button
+                class="back-button"
+                onclick="backToDashboard()">
+                ←
+            </button>
+
+        </div>
+
+
+        <!-- Profile Card -->
+        <div class="profile-main-card">
+
+            <div class="profile-avatar">
+                AK
+            </div>
+
+            <div class="profile-main-info">
+
+                <h2>Arun Kumar</h2>
+
+                <p>
+                    Mentro Driver Partner
+                </p>
+
+                <span class="verified-badge">
+                    ✓ Verified Driver
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Personal Details -->
+        <div class="profile-section">
+
+            <h2>Personal details</h2>
+
+            <div class="profile-row">
+                <span>Full name</span>
+                <strong>Arun Kumar</strong>
+            </div>
+
+            <div class="profile-row">
+                <span>Mobile number</span>
+                <strong>+91 98765 43210</strong>
+            </div>
+
+        </div>
+
+
+        <!-- Vehicle Details -->
+        <div class="profile-section">
+
+            <h2>Vehicle details</h2>
+
+            <div class="profile-row">
+                <span>Vehicle type</span>
+                <strong>Car</strong>
+            </div>
+
+            <div class="profile-row">
+                <span>Vehicle number</span>
+                <strong>TN 01 AB 1234</strong>
+            </div>
+
+            <div class="profile-row">
+                <span>Vehicle model</span>
+                <strong>Hyundai i20</strong>
+            </div>
+
+        </div>
+
+
+        <!-- Documents -->
+        <div class="profile-section">
+
+            <h2>Documents</h2>
+
+            <div class="document-status">
+
+                <div>
+                    <strong>Driving Licence</strong>
+                    <span>Verified</span>
+                </div>
+
+                <b>✓</b>
+
+            </div>
+
+            <div class="document-status">
+
+                <div>
+                    <strong>Vehicle RC</strong>
+                    <span>Verified</span>
+                </div>
+
+                <b>✓</b>
+
+            </div>
+
+            <div class="document-status">
+
+                <div>
+                    <strong>Insurance</strong>
+                    <span>Pending</span>
+                </div>
+
+                <b class="pending">!</b>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="edit-profile-button"
+            onclick="editProfile()">
+
+            Edit Profile
+
+        </button>
+
+    </div>
+
+</section>
+<!-- MENTRO SUPPORT -->
+<section id="supportPage" class="support-page hidden">
+
+    <div class="support-container">
+
+        <!-- Header -->
+        <div class="support-header">
+
+            <div>
+                <span class="page-label">MENTRO HELP</span>
+                <h1>Support</h1>
+                <p>We're here to help you with your ride.</p>
+            </div>
+
+            <button
+                class="back-button"
+                onclick="backToDashboard()">
+                ←
+            </button>
+
+        </div>
+
+
+        <!-- Emergency / Urgent -->
+        <div class="support-banner">
+
+            <div class="support-banner-icon">
+                !
+            </div>
+
+            <div>
+                <strong>Need urgent help?</strong>
+
+                <p>
+                    Contact the Mentro Support Team
+                    for immediate assistance.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Support Options -->
+        <div class="support-options">
+
+            <button
+                class="support-option"
+                onclick="openRideProblem()">
+
+                <div class="support-option-icon">
+                    🚕
+                </div>
+
+                <div>
+                    <strong>Ride problem</strong>
+
+                    <span>
+                        Report an issue during your ride
+                    </span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+
+            <button
+                class="support-option"
+                onclick="openCancellation()">
+
+                <div class="support-option-icon">
+                    ⚠
+                </div>
+
+                <div>
+                    <strong>Cancellation problem</strong>
+
+                    <span>
+                        Contact Mentro Team about cancellation
+                    </span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+
+            <button
+                class="support-option"
+                onclick="contactMentro()">
+
+                <div class="support-option-icon">
+                    💬
+                </div>
+
+                <div>
+                    <strong>Contact Mentro Team</strong>
+
+                    <span>
+                        Get help from our support team
+                    </span>
+                </div>
+
+                <b>›</b>
+
+            </button>
+
+        </div>
+
+
+        <!-- Support Notice -->
+        <div class="support-notice">
+
+            <strong>Important</strong>
+
+            <p>
+                If you face a problem with a customer or ride,
+                please contact Mentro Support instead of taking
+                independent action.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROBLEM FORM -->
+<section id="problemPage" class="problem-page hidden">
+
+    <div class="problem-container">
+
+        <button
+            class="back-button"
+            onclick="backToSupport()">
+            ←
+        </button>
+
+        <span class="page-label">MENTRO SUPPORT</span>
+
+        <h1>Tell us what happened</h1>
+
+        <p>
+            Select the issue and our team will assist you.
+        </p>
+
+
+        <div class="problem-card">
+
+            <label for="problemType">
+                Problem type
+            </label>
+
+            <select id="problemType">
+
+                <option value="">
+                    Select a problem
+                </option>
+
+                <option>
+                    Customer issue
+                </option>
+
+                <option>
+                    Pickup problem
+                </option>
+
+                <option>
+                    Drop location problem
+                </option>
+
+                <option>
+                    Vehicle problem
+                </option>
+
+                <option>
+                    Safety concern
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+
+            <label for="problemMessage">
+                Description
+            </label>
+
+            <textarea
+                id="problemMessage"
+                placeholder="Explain the problem briefly..."
+                rows="5">
+            </textarea>
+
+
+            <button
+                class="submit-problem"
+                onclick="submitProblem()">
+
+                Send to Mentro Team
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- OTP VERIFICATION PAGE -->
+<section id="otpPage" class="otp-page hidden">
+
+    <div class="otp-container">
+
+        <div class="otp-logo">
+            MD
+        </div>
+
+        <h1>Verify your number</h1>
+
+        <p class="otp-subtitle">
+            Enter the 6-digit OTP sent to your mobile number
+        </p>
+
+        <div class="otp-number">
+            +91 <span id="otpMobileNumber">XXXXXXXXXX</span>
+        </div>
+
+        <input
+            type="text"
+            id="otpInput"
+            class="otp-input"
+            maxlength="6"
+            inputmode="numeric"
+            placeholder="Enter 6-digit OTP"
+        >
+
+        <button
+            class="otp-verify-button"
+            onclick="verifyDemoOTP()">
+
+            Verify & Continue →
+
+        </button>
+
+        <button
+            class="change-number-button"
+            onclick="backToLogin()">
+
+            ← Change number
+
+        </button>
+
+        <p class="demo-otp-text">
+            Demo OTP: <strong>123456</strong>
+        </p>
+
+    </div>
+
+</section>
+
+<section id="registerPage" class="page hidden">
+
+    <div class="auth-card">
+
+        <div class="logo-box">
+            MD
+        </div>
+
+        <h1>Become a Mentro Driver</h1>
+
+        <p>Register as a driver partner</p>
+
+        <form onsubmit="registerDriver(event)">
+
+            <label>Full Name</label>
+            <input
+                type="text"
+                id="driverName"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label>Mobile Number</label>
+            <input
+                type="tel"
+                id="driverMobile"
+                placeholder="Enter mobile number"
+                maxlength="10"
+                required
+            >
+
+            <label>Vehicle Number</label>
+            <input
+                type="text"
+                id="vehicleNumber"
+                placeholder="TN 00 AB 0000"
+                required
+            >
+
+            <label>Vehicle Model</label>
+            <input
+                type="text"
+                id="vehicleModel"
+                placeholder="Enter vehicle model"
+                required
+            >
+
+            <label>Driving Licence Number</label>
+            <input
+                type="text"
+                id="licenseNumber"
+                placeholder="Enter licence number"
+                required
+            >
+
+            <button type="submit" class="primary-btn">
+                Continue →
+            </button>
+
+        </form>
+
+        <p class="switch-auth">
+            Already a driver?
+            <button type="button" onclick="showPage('loginPage')">
+                Login
+            </button>
+        </p>
+
+    </div>
+
+</section>
+<script src="script.js"></script>
+
+</body>
+</html>
